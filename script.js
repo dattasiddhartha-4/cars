@@ -170,16 +170,7 @@ menu2 = function(){
 }
 
 host = function(){
-	document.getElementById("host").onclick = null;
-	f.style.transform = "translate3d(0, -100vh, 0)";
-	setTimeout(function(){
-		f.innerHTML = "<div class='info title'>Use this code to join the game!<div id='code'>Loading...</div></div><div id='startgame' class='title' onclick='startGame()' ontouchstart='this.click()'>Start!</div>";
-		if(VR)
-			f.innerHTML += "<div id='divider'></div>";
-		f.appendChild(element);
-		f.style.transform = "none";
-		getCode();
-	}, 1000);
+	document.getElementById("host").onclick = true;
 	
 	function getCode(){
 		code = "";
