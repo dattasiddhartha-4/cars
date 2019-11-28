@@ -170,24 +170,15 @@ menu2 = function(){
 }
 
 host = function(){
-	document.getElementById("host").onclick = true;
-	
-	function getCode(){
-		code = "";
-		var letters = "ABCDEFGHIJKLMMNOPQRSTUVWXYZ";
-		for(var i = 0; i < 4; i++)
-			code += letters[Math.floor(Math.random() * letters.length)];
-		database.ref(code).once("value", function(codeCheck){
-			console.log(codeCheck.val());
-			if(codeCheck.val() == null || codeCheck.val().status == -1){
-				console.log(code);
-				document.getElementById("code").innerHTML = code;
-				
-				database.ref(code).set({
-					status: 0,
-					players: {},
-					map: document.getElementById("trackcode").innerHTML
-				});
+	document.getElementById("host").onclick = null;
+	f.style.transform = "translate3d(0, -100vh, 0)";
+	setTimeout(function(){
+		f.innerHTML = "<div class='info title'>Use this code to join the game!<div id='code'>Loading...</div></div><div id='startgame' class='title' onclick='startGame()' ontouchstart='this.click()'>Start!</div>";
+		if(VR)
+			f.innerHTML += "<div id='divider'></div>";
+		f.appendChild(element);
+		f.style.transform = "none";
+	}, 1000);
 				
 				database.ref(code + "/players").on("child_added", function(p){
 					console.log(p);
@@ -297,7 +288,6 @@ host = function(){
 					}
 				});
 			}else
-				getCode();
 		});
 	}
 	
