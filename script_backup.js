@@ -113,7 +113,7 @@ function toggleFullScreen() {
 	window.scrollTo(0,1);
 }
 
-var name, code, players = {}, me = {}, gameStarted = true, gameSortaStarted = true, left = false, right = false, lap;
+var name, code, players = {}, me = {}, gameStarted = false, gameSortaStarted = false, left = false, right = false, lap;
 var carPos = [
 	{x: 0, y: 0},
 	{x: 2, y: 0},
